@@ -1,9 +1,9 @@
 {
-	"geode": "2.0.0-beta.22",
+	"geode": "2.0.0-beta.24",
 	"gd": "2.204",
-	"version": "v1.0.0",
+	"version": "v1.0.1",
 	"id": "zhyvelle.zw",
-	"name": "zw",
+	"name": "zw mod",
 	"developer": "zhyvelle",
 	"description": "zw mod",
 	"resources": {
@@ -13,9 +13,32 @@
 	},
 	"settings": {
 		"enable": {
-			"name": "enable mod",
+			"name": "enable zw",
+			"type": "bool",
+			"default": false
+		},
+		"good": {
+			"name": "Brandschutz-Feuer-900x900px.jpg",
+			"description": "Brandschutz-Feuer-900x900px.jpg",
+			"type": "bool",
+			"default": false
+		},
+		"bad": {
+			"name": "enable bad",
+			"description": "Bad",
 			"type": "bool",
 			"default": false
 		}
-	}
+	},
+	"dependencies": [
+		{
+			"id": "geode.node-ids",
+            "version": ">=v1.9.1",
+            "importance": "required",
+            "platforms": [
+                "windows"
+            ]
+		}
+	],
+	"repository": "https://github.com/zhyvelle/zw"
 }
