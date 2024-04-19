@@ -1,3 +1,5 @@
+#include "Geode/binding/FLAlertLayer.hpp"
+#include "Geode/cocos/cocoa/CCObject.h"
 #include <Geode/Geode.hpp>
 
 using namespace geode::prelude;
@@ -8,7 +10,7 @@ class $modify(MyMenuLayer, MenuLayer) {
 		if (!MenuLayer::init()) {
 			return false;
 		}
-		
+
 		auto menu = this->getChildByID("bottom-menu");
 
 		// gay
@@ -41,6 +43,16 @@ class $modify(MyMenuLayer, MenuLayer) {
 			bad->setID("bad"_spr);
 			menu->addChild(bad);
 		}
+		//sk23 (the guy with planes involved in 9/11 search history)
+		bool blender = Mod::get()->getSettingValue<bool>("beamng");
+
+		if (blender) {
+			auto blenderSpr = CCSprite::create("doihavetoaddthis.png"_spr);
+			auto blender = CCMenuItemSpriteExtra::create(blenderSpr, this, menu_selector(MyMenuLayer::onBeamng));
+			blender->setID("blender"_spr);
+			menu->addChild(blender);
+		}
+
 		menu->updateLayout();
 
 		return true;
@@ -56,5 +68,8 @@ class $modify(MyMenuLayer, MenuLayer) {
 
 	void onBad(CCObject*) {
 		FLAlertLayer::create("message", "im bad\ni also dont know how to make image fit", "ok")->show();
+	}
+	void onBeamng(CCObject*) {
+		FLAlertLayer::create("message", "https://discord.com/channels/1212932139604119552/1212932140107440191/1228899927598563400", "ok")->show();
 	}
 };
