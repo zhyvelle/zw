@@ -17,7 +17,7 @@ class $modify(MyMenuLayer, MenuLayer) {
 
 		auto zw = CCMenuItemSpriteExtra::create(spr, this, menu_selector(MyMenuLayer::onZw));
 
-		zw->setID("zw");
+		zw->setID("zw"_spr);
 
 		if (enableValue == true) {
 			menu->addChild(zw);
@@ -31,7 +31,7 @@ class $modify(MyMenuLayer, MenuLayer) {
 
 		auto good = CCMenuItemSpriteExtra::create(goodSpr, this, menu_selector(MyMenuLayer::onGood));
 
-		good->setID("good");
+		good->setID("good"_spr);
 
 		if (enableValueGood == true) {
 			menu->addChild(good);
@@ -45,7 +45,7 @@ class $modify(MyMenuLayer, MenuLayer) {
 
 		auto bad = CCMenuItemSpriteExtra::create(badSpr, this, menu_selector(MyMenuLayer::onBad));
 
-		bad->setID("bad");
+		bad->setID("bad"_spr);
 
 		if (enableValueBad == true) {
 			menu->addChild(bad);
@@ -64,6 +64,6 @@ class $modify(MyMenuLayer, MenuLayer) {
 	}
 
 	void onBad(CCObject*) {
-		FLAlertLayer::create("message", "im bad", "ok");
+		FLAlertLayer::create("message", "im bad", "ok")->show();
 	}
 };
