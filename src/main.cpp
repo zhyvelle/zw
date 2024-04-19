@@ -64,6 +64,6 @@ class $modify(MyMenuLayer, MenuLayer) {
 	}
 
 	void onBad(CCObject*) {
-		FLAlertLayer::create("message", "im bad", "ok")->show();
+		FLAlertLayer::create("message", "im bad\ni also dont know how to make image fit", "ok")->show();
 	}
 };
