@@ -28,6 +28,12 @@
 			"description": "Bad",
 			"type": "bool",
 			"default": false
+		},
+		"beamng": {
+			"name": "enable blender",
+			"description": "blender (Sk23)",
+			"type": "bool",
+			"default": false
 		}
 	},
 	"dependencies": [

@@ -1,3 +1,5 @@
+#include "Geode/binding/FLAlertLayer.hpp"
+#include "Geode/cocos/cocoa/CCObject.h"
 #include <Geode/Geode.hpp>
 
 using namespace geode::prelude;
@@ -8,49 +10,50 @@ class $modify(MyMenuLayer, MenuLayer) {
 		if (!MenuLayer::init()) {
 			return false;
 		}
-		// gay
-		auto spr = CCSprite::create("gay.png"_spr);
-
-		auto enableValue = Mod::get()->getSettingValue<bool>("enable");
 
 		auto menu = this->getChildByID("bottom-menu");
 
-		auto zw = CCMenuItemSpriteExtra::create(spr, this, menu_selector(MyMenuLayer::onZw));
+		// gay
+		bool gay = Mod::get()->getSettingValue<bool>("enable");
 
-		zw->setID("zw");
-
-		if (enableValue == true) {
+		if (gay) {
+			auto spr = CCSprite::create("gay.png"_spr);
+			auto zw = CCMenuItemSpriteExtra::create(spr, this, menu_selector(MyMenuLayer::onZw));
+			zw->setID("zw"_spr);
 			menu->addChild(zw);
-			menu->updateLayout();
 		}
 
 		// not gay
-		auto goodSpr = CCSprite::create("good.png"_spr);
 
-		auto enableValueGood = Mod::get()->getSettingValue<bool>("good");
+		bool notGay = Mod::get()->getSettingValue<bool>("good");
 
-		auto good = CCMenuItemSpriteExtra::create(goodSpr, this, menu_selector(MyMenuLayer::onGood));
-
-		good->setID("good");
-
-		if (enableValueGood == true) {
+		if (notGay) {
+			auto goodSpr = CCSprite::create("good.png"_spr);
+			auto good = CCMenuItemSpriteExtra::create(goodSpr, this, menu_selector(MyMenuLayer::onGood));
+			good->setID("good"_spr);
 			menu->addChild(good);
-			menu->updateLayout();
 		}
 
 		//bad
-		auto badSpr = CCSprite::create("bad.png"_spr);
+		bool bift = Mod::get()->getSettingValue<bool>("bad");
 
-		auto enableValueBad = Mod::get()->getSettingValue<bool>("bad");
-
-		auto bad = CCMenuItemSpriteExtra::create(badSpr, this, menu_selector(MyMenuLayer::onBad));
-
-		bad->setID("bad");
-
-		if (enableValueBad == true) {
+		if (bift) {
+			auto badSpr = CCSprite::create("bad.png"_spr);
+			auto bad = CCMenuItemSpriteExtra::create(badSpr, this, menu_selector(MyMenuLayer::onBad));
+			bad->setID("bad"_spr);
 			menu->addChild(bad);
-			menu->updateLayout();
 		}
+		//sk23 (the guy with planes involved in 9/11 search history)
+		bool blender = Mod::get()->getSettingValue<bool>("beamng");
+
+		if (blender) {
+			auto blenderSpr = CCSprite::create("doihavetoaddthis.png"_spr);
+			auto blender = CCMenuItemSpriteExtra::create(blenderSpr, this, menu_selector(MyMenuLayer::onBeamng));
+			blender->setID("blender"_spr);
+			menu->addChild(blender);
+		}
+
+		menu->updateLayout();
 
 		return true;
 	}
@@ -65,5 +68,8 @@ class $modify(MyMenuLayer, MenuLayer) {
 
 	void onBad(CCObject*) {
 		FLAlertLayer::create("message", "im bad\ni also dont know how to make image fit", "ok")->show();
+	}
+	void onBeamng(CCObject*) {
+		FLAlertLayer::create("message", "https://discord.com/channels/1212932139604119552/1212932140107440191/1228899927598563400", "ok")->show();
 	}
 };
